@@ -11,6 +11,7 @@
 
 # import stuff as needed
 import os
+from time import sleep
 
 # define useful things
 webdir = '/Users/james/Dropbox/website/setinews'
@@ -26,7 +27,17 @@ title: SETI.news for XYZ
 ---
 
 
-# save .md file
+# save .md file in the webdir+'/_posts'
 
 # run commands
-os.popen('jekyll build').read()
+
+# change to the webdir
+
+# run jekyll build
+jbuild = os.popen('jekyll build').read()
+sleep(0.5)
+
+# put error catch after this, don't proceed to git if build breaks
+jbuild.find('done')
+
+# if ok jbuild, push to git
